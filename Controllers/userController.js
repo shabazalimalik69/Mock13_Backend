@@ -13,12 +13,11 @@ const postUser = async (req, res) => {
 };
 
 const getUser = async(req,res)=>{
-  let { page = 1, limit = 2 } = req.query;
+
   try{
-      const user = await User.find({}).skip((page - 1) * limit)
-      .limit(limit);
-      let nos = await User.find().count();
-      return res.status(200).send({user:user,totalPages: Math.ceil(nos / limit) });
+      const user = await User.find({})
+  
+      return res.status(200).send(user);
   }
   catch(err){
       console.log(err);
