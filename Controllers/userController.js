@@ -18,7 +18,7 @@ const getUser = async(req,res)=>{
       const user = await User.find({}).skip((page - 1) * limit)
       .limit(limit);
       let nos = await User.find().count();
-      return res.status(200).send({user,totalPages: Math.ceil(nos / limit) });
+      return res.status(200).send({user:user,totalPages: Math.ceil(nos / limit) });
   }
   catch(err){
       console.log(err);
